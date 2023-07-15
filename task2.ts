@@ -34,7 +34,7 @@ export const task2 = async (): Promise<any> => {
 
         axios.interceptors.request.use(interceptor);
         const response = await axios.post(url, payload);
-        console.log(JSON.stringify(response.data));
+        //console.log(JSON.stringify(response.data));
         return response.data;
     } catch (error) {
         console.log('unexpected error: ', error);

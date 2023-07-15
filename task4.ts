@@ -1,7 +1,6 @@
 // @ts-ignore
 import { task2 } from './task2.ts';
-import * as csv from 'csv-writer';
-import * as path from 'path';
+import { createObjectCsvWriter } from "csv-writer";
 
 interface Row {
     Year: number;
@@ -27,7 +26,7 @@ const task4 = async (): Promise<void> => {
 
                 const row: Row = {
                     Year: year,
-                    Subject: subject,
+                    Subject: capitaliseFirstLetter(subject),
                     Lesson: lesson,
                 };
 
@@ -36,7 +35,7 @@ const task4 = async (): Promise<void> => {
         }
     }
 
-    const writer = csv.({
+    const writer = createObjectCsvWriter({
         path: "data.csv",
         header: [
             { id: 'Year', title: 'Year' },
@@ -51,6 +50,10 @@ const task4 = async (): Promise<void> => {
         })
         .catch((err: any) => {
         });
+
+    function capitaliseFirstLetter(string: string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 }
 
 task4();
