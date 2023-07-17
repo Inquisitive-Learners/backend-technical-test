@@ -1,4 +1,5 @@
-import { task1 } from './task1';
+// @ts-ignore
+import { task1 } from './task1.ts';
 
 const hello = async (): Promise<void> => {
   console.log('Hello World');
